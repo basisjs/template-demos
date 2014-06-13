@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>My app</title>
+  <style>
+    BODY {
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #333;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="margin: 1em 20px;">basis.js theme switch demo</h1>
+  <script src="lib/basis/src/basis.js" basis-config=""></script>
+  <script>
+    // template switching
+    (function(){
+      var changeThemeHandler = function(){
+        var theme = 'base';
+        if (window.innerWidth < 640)
+          theme = 'mobile';
+        basis.require('basis.template').setTheme(theme);
+      };
+      window.addEventListener('resize', changeThemeHandler, true);
+      changeThemeHandler();
+    })();
+  </script>
+  <script>
+    basis.require('basis.devpanel');
+    basis.require('basis.ui');
+    basis.require('basis.template');
+
+    basis.template.define({
+      list: basis.resource('./templates/base/list.tmpl'),
+      item: basis.resource('./templates/base/item.tmpl')
+    });
+
+    basis.template.theme('mobile').define({
+      list: basis.resource('./templates/mobile/list.tmpl'),
+      item: basis.resource('./templates/mobile/item.tmpl')
+    });
+
+    new basis.ui.Node({
+      container: document.body,
+      template: basis.template.get('list'),
+      selection: true,
+      childClass: {
+        template: basis.template.get('item'),
+        binding: {
+          name: 'data:',
+          company: 'data:',
+          email: 'data:',
+          phone: 'data:',
+          address: 'data:',
+          about: 'data:'
+        }
+      },
+      childNodes: basis.data.wrap(basis.require('./data/contacts.json'))
+    });
+  </script>
+</body>
+</html>

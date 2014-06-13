@@ -1,0 +1,18 @@
+.table-wrapper {
+  margin: 20px;
+  border: 1px solid #BBB;
+  border-radius: 4px;
+  overflow: auto;
+}
+.table {
+  box-sizing: border-box;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.header-cell {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}

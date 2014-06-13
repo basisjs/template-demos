@@ -1,0 +1,23 @@
+.cell {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.cell_name {
+  white-space: nowrap;
+  font-weight: bold;
+}
+.cell_phone {
+  white-space: nowrap;
+}
+.row:hover {
+  background: #F4F4F4;
+}
+
+.row_selected,
+.row_selected:hover {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #428bca;
+}
