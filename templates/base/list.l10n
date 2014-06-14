@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "type": {}
+  },
+  "en-US": {
+    "name": "Name",
+    "phone": "Phone",
+    "company": "Company",
+    "about": "About"
+  },
+  "ru-RU": {
+    "name": "Имя",
+    "phone": "Телефон",
+    "company": "Компания",
+    "about": "Заметки"
+  }
+}

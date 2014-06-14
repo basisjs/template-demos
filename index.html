@@ -33,20 +33,42 @@
   <script>
     basis.require('basis.devpanel');
     basis.require('basis.ui');
+    basis.require('basis.l10n');
     basis.require('basis.template');
+    basis.require('basis.ui.button');
 
+    //
+    // setup themes and l10n
+    //
+    basis.l10n.setCultureList('en-US ru-RU');
     basis.template.define({
+      layout: basis.resource('./templates/base/layout.tmpl'),
       list: basis.resource('./templates/base/list.tmpl'),
       item: basis.resource('./templates/base/item.tmpl')
     });
-
     basis.template.theme('mobile').define({
       list: basis.resource('./templates/mobile/list.tmpl'),
-      item: basis.resource('./templates/mobile/item.tmpl')
+      item: basis.resource('./templates/mobile/item.tmpl'),
+      'basis.ui.button.Button': basis.resource('./templates/mobile/button.tmpl')
     });
 
-    new basis.ui.Node({
-      container: document.body,
+    //
+    // build an interface
+    //
+    var dict = basis.l10n.dictionary('./dict.l10n');
+    var clickmeButton = new basis.ui.button.Button({
+      caption: dict.token('clickme'),
+      click: function(){
+        alert(this.caption.value);
+      }
+    });
+    var showAMagickButton = new basis.ui.button.Button({
+      caption: dict.token('showAMagick'),
+      click: function(){
+        alert(this.caption.value);
+      }
+    });
+    var list = new basis.ui.Node({
       template: basis.template.get('list'),
       selection: true,
       childClass: {
@@ -62,6 +84,17 @@
       },
       childNodes: basis.data.wrap(basis.require('./data/contacts.json'))
     });
+
+    var app = new basis.ui.Node({
+      container: document.body,
+      template: basis.template.get('layout'),
+      binding: {
+        clickmeButton: clickmeButton, 
+        showAMagickButton: showAMagickButton,
+        list: list
+      }
+    });
+    
   </script>
 </body>
 </html>

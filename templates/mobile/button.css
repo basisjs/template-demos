@@ -1,0 +1,13 @@
+.button
+{
+	background: #E0E0E0;
+	border: 1px solid #AAA;
+	border-radius: 4px;
+	text-align: center;
+	padding: .75em;
+	margin: 5px 0;
+}
+.button:hover
+{
+	background: gold;
+}

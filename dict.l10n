@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "type": {}
+  },
+  "en-US": {
+    "clickme": "Click me",
+    "showAMagick": "Show me a magic"
+  },
+  "ru-RU": {
+    "clickme": "Нажми меня",
+    "showAMagick": "Магия! :)"
+  }
+}
